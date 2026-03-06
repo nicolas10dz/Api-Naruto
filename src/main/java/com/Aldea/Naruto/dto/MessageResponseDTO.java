@@ -1,6 +1,6 @@
 package com.Aldea.Naruto.dto;
-public class MessageResponseDTO {
 
+public class MessageResponseDTO {
 
     private String message;
 
@@ -11,6 +11,5 @@ public class MessageResponseDTO {
     public String getMessage() {
         return message;
     }
-
 
 }

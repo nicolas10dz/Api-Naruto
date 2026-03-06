@@ -1,3 +1,22 @@
 spring:
   application:
     name: Naruto
+
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/naruto
+    username: root
+    password: 
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+server:
+  port: 9090
+  servlet:
+    context-path: /api/v1/Naruto
+
+logging:
+  level:
+    org.springframework.web: DEBUG 
+    org.springframework.jdbc.core.JdbcTemplate: DEBUG 
+    org.springframework.jdbc.core.StatementCreatorUtils: TRACE
+    

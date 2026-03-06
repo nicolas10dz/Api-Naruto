@@ -8,6 +8,8 @@ public class NarutoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(NarutoApplication.class, args);
+
+		
 	}
 
 }

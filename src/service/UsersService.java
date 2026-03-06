@@ -49,30 +49,30 @@ return userResponseDTO;
 
 
     public UsersResponseDTO createUser(UsersRequestDTO usersRequestDTO) {
-        // Objeto para capturar el ID autoincremental generado por el motor de BD
-        // (MySQL/PostgreSQL, etc.)
+
         KeyHolder keyHolder = new GeneratedKeyHolder();
-                // update se usa para insert, update, delete
+
         jdbcTemplate.update(connection -> {
-            // Preparamos la sentencia usando la constante SQL y pedimos que devuelva las
-            // llaves generadas
+
             PreparedStatement preparedStatement = connection.prepareStatement(
                     UsersRepository.INSERT_USER,
                     Statement.RETURN_GENERATED_KEYS);
 
-                    
-            // Sustituimos los "?" de la consulta por valores reales
-            preparedStatement.setString(1, usersRequestDTO.getName_());
-            preparedStatement.setString(2, usersRequestDTO.getEmail());
-            preparedStatement.setString(3, usersRequestDTO.getPhone());
-            preparedStatement.setString(4, usersRequestDTO.getAddress());
+
+            preparedStatement.setString(1, usersRequestDTO.getName_team());
+            preparedStatement.setString(2, usersRequestDTO.getName_lider());
+            preparedStatement.setString(3, usersRequestDTO.getName_integrante1());
+            preparedStatement.setString(4, usersRequestDTO.getName_integrante2());
+            preparedStatement.setString(5, usersRequestDTO.getName_integrante3());
 
             return preparedStatement;
-        }, keyHolder); // El keyHolder se llena con la información del nuevo ID
+        }, keyHolder);
 
 
-                // con la informacion del nuevo usuario creado
+   
         UsersResponseDTO response = new UsersResponseDTO();
+
+
         response.setId(keyHolder.getKey().longValue());
         response.setName_team(usersRequestDTO.getName_team());
         response.setName_lider(usersRequestDTO.getName_lider());
@@ -80,7 +80,7 @@ return userResponseDTO;
         response.setName_integrante2(usersRequestDTO.getName_integrante2());
         response.setName_integrante3(usersRequestDTO.getName_integrante3());
 
-        // Retornamos el DTO con la información del nuevo usuario creado al controller
+
         return response;
     }
 

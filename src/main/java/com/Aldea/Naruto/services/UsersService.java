@@ -10,7 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
-import org.springframework.stereotype.Service; // Importación duplicada (se mantiene como pediste)
+import org.springframework.stereotype.Service;
 
 import com.Aldea.Naruto.constants.MessageConstants;
 import com.Aldea.Naruto.dto.MessageResponseDTO;
@@ -61,7 +61,7 @@ public class UsersService {
 
         UsersResponseDTO response = new UsersResponseDTO();
 
-        // Se mantiene tu lógica de recuperación de ID y mapeo
+
         response.setId(keyHolder.getKey().longValue());
         response.setName_team(usersRequestDTO.getName_team());
         response.setName_lider(usersRequestDTO.getName_lider());
@@ -73,14 +73,12 @@ public class UsersService {
     }
 
     public List<UsersResponseDTO> getUsers() {
-        // CORRECCIÓN: Cambiado de usersMapper a usersRowMapper para que coincida con tu
-        // variable
+  
         return jdbcTemplate.query(UsersRepository.GET_USERS, usersRowMapper);
     }
 
     public UsersResponseDTO getUser(Long id) {
-        // CORRECCIÓN: Cambiado de usersMapper a usersRowMapper para que coincida con tu
-        // variable
+
         return jdbcTemplate.queryForObject(UsersRepository.GET_USER, usersRowMapper, id);
     }
 
@@ -91,4 +89,3 @@ public class UsersService {
     }
 }
 
-//Listo
